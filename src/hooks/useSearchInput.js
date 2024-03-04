@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export const useSearchPerson = (initialValue) => {
+export const useSearchInput = (initialValue) => {
   const [searchInput, setSearchInput] = useState(initialValue);
 
-  const handleSearchPerson = (searchValue) => {
+  const handleSearchInput = (searchValue) => {
     setSearchInput(searchValue);
   };
 
   return {
     searchInput,
-    handleSearchPerson,
+    handleSearchInput,
   };
 };
