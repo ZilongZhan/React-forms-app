@@ -1,14 +1,14 @@
-import { PersonsList, Form, Filter } from "./components";
-import { persons as originalPersons } from "./data";
+import { PersonsList, Form, Filter, Header } from "./components";
+import { persons as originalPersons, heading1, heading2 } from "./data";
 import {
   usePersons,
   usePersonName,
   usePersonNumber,
-  useSearchPerson,
+  useSearchInput,
 } from "./hooks";
 
 const App = () => {
-  const { searchInput, handleSearchPerson } = useSearchPerson("");
+  const { searchInput, handleSearchInput } = useSearchInput("");
   const { personName, handleUpdatePersonName } = usePersonName("");
   const { personNumber, handleUpdatePersonNumber } = usePersonNumber("");
   const { persons, handleUpdatePersons } = usePersons(
@@ -18,16 +18,16 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <Header heading={heading1} />
       <Form
+        handleUpdatePersons={handleUpdatePersons}
         handleUpdatePersonName={handleUpdatePersonName}
         handleUpdatePersonNumber={handleUpdatePersonNumber}
-        handleUpdatePersons={handleUpdatePersons}
         personName={personName}
         personNumber={personNumber}
       />
-      <h2>Numbers</h2>
-      <Filter handleSearchPerson={handleSearchPerson} />
+      <Header heading={heading2} />
+      <Filter handleSearchInput={handleSearchInput} />
       <PersonsList persons={persons} />
     </div>
   );

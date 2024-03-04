@@ -1,7 +1,7 @@
-export const Filter = ({ handleSearchPerson }) => {
+export const Filter = ({ handleSearchInput }) => {
   const handleChangeSearchInput = (event) => {
     const { target } = event;
-    handleSearchPerson(target.value);
+    handleSearchInput(target.value);
   };
 
   return (

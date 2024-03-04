@@ -1,3 +1,5 @@
+import { InputField } from "./InputField";
+
 export const Form = ({
   handleUpdatePersonName,
   handleUpdatePersonNumber,
@@ -31,22 +33,18 @@ export const Form = ({
 
   return (
     <form onSubmit={addNewPerson}>
-      <div>
-        name:
-        <input
-          value={personName}
-          onChange={handleChangeNewPersonName}
-          required
-        />
-      </div>
-      <div>
-        number:
-        <input
-          value={personNumber}
-          onChange={handleChangeNewPersonNumber}
-          required
-        />
-      </div>
+      <InputField
+        label="name"
+        type="text"
+        value={personName}
+        handler={handleChangeNewPersonName}
+      />
+      <InputField
+        label="number"
+        type="number"
+        value={personNumber}
+        handler={handleChangeNewPersonNumber}
+      />
       <div>
         <button type="submit">add</button>
       </div>
