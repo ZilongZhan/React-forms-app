@@ -1,22 +1,34 @@
-import { useState } from "react";
+import { PersonsList, Form, Filter, Header } from "./components";
+import { persons as originalPersons, heading1, heading2 } from "./data";
+import {
+  usePersons,
+  usePersonName,
+  usePersonNumber,
+  useSearchInput,
+} from "./hooks";
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
-  const [newName, setNewName] = useState("");
+  const { searchInput, handleSearchInput } = useSearchInput("");
+  const { personName, handleUpdatePersonName } = usePersonName("");
+  const { personNumber, handleUpdatePersonNumber } = usePersonNumber("");
+  const { persons, handleUpdatePersons } = usePersons(
+    originalPersons,
+    searchInput
+  );
 
   return (
     <div>
-      <h2>Phonebook</h2>
-      <form>
-        <div>
-          name: <input />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
-      ...
+      <Header heading={heading1} />
+      <Form
+        handleUpdatePersons={handleUpdatePersons}
+        handleUpdatePersonName={handleUpdatePersonName}
+        handleUpdatePersonNumber={handleUpdatePersonNumber}
+        personName={personName}
+        personNumber={personNumber}
+      />
+      <Header heading={heading2} />
+      <Filter handleSearchInput={handleSearchInput} />
+      <PersonsList persons={persons} />
     </div>
   );
 };
